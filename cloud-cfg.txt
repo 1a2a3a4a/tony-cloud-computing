@@ -9,6 +9,7 @@ packages:
  - rabbitmq-server
  - build-essential
  - cowsay
+ - python-openstackclient
 byobu_default: system 
 
 write_files:
