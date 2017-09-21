@@ -58,14 +58,6 @@ time.sleep(10)
 
 
 
-if floating_ip_pool_name != None: 
-    floating_ip = nova.floating_ips.create(floating_ip_pool_name)
-else:
-    pass
-    #sys.exit("public ip pool name not defined.")
-
-
-
 while inst_status == 'BUILD':
     print "Instance: "+instance.name+" is in "+inst_status+" state, sleeping for 5 seconds more..."
     time.sleep(5)
@@ -74,9 +66,3 @@ while inst_status == 'BUILD':
 
 print "Instance: "+ instance.name +" is in " + inst_status + "state"
 
-
-if floating_ip.ip != None: 
-    instance.add_floating_ip(floating_ip)
-    print "Instance booted! Name: " + instance.name + " Status: " +instance.status+ ", floating IP attached " + floating_ip.ip
-else:
-    print "Instance booted! Name: " + instance.name + " Status: " +instance.status+ ", floating IP missing"
