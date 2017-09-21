@@ -6,6 +6,7 @@ packages:
  - cowsay
  - python-pip
  - python-dev
+ - rabbitmq-server
  - build-essential
  - cowsay
 byobu_default: system 
@@ -23,9 +24,17 @@ write_files:
           return data
       if __name__ == '__main__':
           app.run(host='0.0.0.0',debug=True)
+  - path: /home/ubuntu/tasks.py
+    content: |
+      from celery import Celery
 
+      app = Celery('tasks', broker='pyamqp://guest@localhost//')
+
+      @app.task
+      def add(x, y):
+      	  return x + y
 runcmd:
  - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
  - source /home/ubuntu/.bashrc
  - pip install Flask
- - python /home/ubuntu/cowsay-app.py & 
+ - pip install celery
