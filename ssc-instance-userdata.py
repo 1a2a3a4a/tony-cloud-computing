@@ -13,6 +13,7 @@ private_net = "SNIC 2017/13-45 Internal IPv4 Network"
 floating_ip_pool_name = "Public External IPv4 Network"
 floating_ip = None
 image_name = "Ubuntu 16.04 LTS (Xenial Xerus) - latest"
+key = 'schoolkey'
 
 loader = loading.get_plugin_loader('password')
 
@@ -48,21 +49,13 @@ else:
 
 secgroups = ['default']
 
-key = 'schoolkey'
+
 
 print "Creating instance ... "
 instance = nova.servers.create(name="Tony VM", image=image, flavor=flavor, userdata=userdata, nics=nics,security_groups=secgroups, key_name=key)
 inst_status = instance.status
 print "waiting for 10 seconds.. "
 time.sleep(10)
-
-
-
-if floating_ip_pool_name != None: 
-    floating_ip = nova.floating_ips.create(floating_ip_pool_name)
-else:
-    pass
-    #sys.exit("public ip pool name not defined.")
 
 
 
@@ -74,9 +67,3 @@ while inst_status == 'BUILD':
 
 print "Instance: "+ instance.name +" is in " + inst_status + "state"
 
-
-if floating_ip.ip != None: 
-    instance.add_floating_ip(floating_ip)
-    print "Instance booted! Name: " + instance.name + " Status: " +instance.status+ ", floating IP attached " + floating_ip.ip
-else:
-    print "Instance booted! Name: " + instance.name + " Status: " +instance.status+ ", floating IP missing"
