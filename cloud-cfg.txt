@@ -32,4 +32,4 @@ runcmd:
  - source /home/ubuntu/.bashrc
  - pip install Flask
  - pip install celery
- - git clone https://github.com/1a2a3a4a/tony-cloud-computing
+ 
