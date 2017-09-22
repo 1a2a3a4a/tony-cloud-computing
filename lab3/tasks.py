@@ -16,7 +16,7 @@ def count_pronouns():
         for line in f:
             if line[0] == '{':
                 try:
-                    text_tweet.append(json.loads(line)['text'].lower()
+                    text_tweet.append(json.loads(line)['text'].lower())
                 except:
                     print 'error'
     
