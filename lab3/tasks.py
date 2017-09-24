@@ -27,23 +27,34 @@ def count_pronouns():
     denna = 0
     denne = 0
     hen = 0
-
+    pronoun_dictionary = {}
+    pronoun_dictionary['han'] = han
+    pronoun_dictionary['hon'] = hon
+    pronoun_dictionary['den'] = den
+    pronoun_dictionary['det'] = det
+    pronoun_dictionary['denna'] = denna
+    pronoun_dictionary['denne'] = denne
+    pronoun_dictionary['hen'] = hen
+    
+    
     unique_tweets = set(text_tweet)
     number_of_unique = len(unique_tweets)
+    pronoun_dictionary['number_of_tweets'] = len(text_tweet)
     
     for tweet in unique_tweets:
         if 'han' in tweet:
-            han += 1
+            pronoun_dictionary['han'] += 1
         if 'hon' in tweet:
-            hon += 1
+            pronoun_dictionary['hon'] += 1 
         if 'den' in tweet:
-            den += 1
+            pronoun_dictionary['den'] += 1 
         if 'det' in tweet:
-            det += 1
+            pronoun_dictionary['det'] += 1 
         if 'denna' in tweet:
-            denna += 1
+            pronoun_dictionary['denna'] += 1
         if 'denne' in tweet:
-            denne += 1
+            pronoun_dictionary['denne'] += 1
         if 'hen' in tweet:
-            hen += 1
-    print han, hon, den, det, denna, denne, hen, number_of_unique
+            pronoun_dictionary['hen'] += 1 
+        
+    return pronoun_dictionary
