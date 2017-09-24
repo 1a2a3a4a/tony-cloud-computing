@@ -11,7 +11,7 @@ app = Flask(__name__)
 def index():
 	return '<h1>hello world</h1>'
 
-@app.route('/count_pronouns', methods=['GET'])
+@app.route('/count_pronouns')
 def count():
 	result = count_pronouns.delay()
 	while result.ready() == False:
@@ -28,8 +28,8 @@ def count():
 	number_of_tweets = pronoun_dictionary['number_of_tweets']
 
 	legend='Frequency of pronouns'
-	values=['han', 'hon', 'den', 'det','denna', 'denne', 'hen']
-	labels=[han, hon, den, det, denna, denne, hen]
+	labels=['han', 'hon', 'den', 'det','denna', 'denne', 'hen', 'number']
+	values=[han, hon, den, det, denna, denne, hen, number_of_tweets]
 
 	return render_template('chart.html', values=values, labels=labels, legend=legend)
  	
