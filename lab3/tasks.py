@@ -12,14 +12,13 @@ def count_pronouns():
     file_path = 'data03'
     text_tweet = []
 
-    with open(file_path) as f:
-        for line in f:
-            if line[0] == '{':
-                try:
-                    text_tweet.append(json.loads(line)['text'].lower())
-                except:
-                    print 'error'
-    
+    try:
+        with open(file_path) as f:
+            for line in f:
+                if line[0] == '{':
+                    text_tweet.append(json.loads(line)['text'].lower())             
+    except:
+        return '<h1>ERROR</h1>'
     han = 0
     hon = 0
     den = 0
