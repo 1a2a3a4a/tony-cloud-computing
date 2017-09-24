@@ -12,7 +12,7 @@ def index():
 @app.route('/count_pronouns', methods=['GET'])
 def count():
 	result = count_pronouns.delay()
-	while result.ready():
+	while result.ready() == False:
 		time.sleep(0.1)
 	return result.result
 
