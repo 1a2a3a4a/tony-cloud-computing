@@ -27,10 +27,11 @@ def count():
 	hen= pronoun_dictionary['hen']
 	number_of_tweets = pronoun_dictionary['number_of_tweets']
 
+	legend='Frequency of pronouns'
 	values=['han', 'hon', 'den', 'det','denna', 'denne', 'hen']
 	labels=[han, hon, den, det, denna, denne, hen]
 
-	return render_template('chart.html', values=values, labels=labels)
+	return render_template('chart.html', values=values, labels=labels, legend=legends)
  	
 	#return '<div> han: ' + str(han) + ' hon: ' + str(hon) + ' den: ' + str(den) + ' det: ' + str(det) + ' denna: ' + str(denna) + ' denne: ' + str(denne) + ' hen: ' + str(hen) + ' number of tweet: ' + str(number_of_tweets) + ' </div>'
 
