@@ -14,7 +14,7 @@ def count():
 	result = count_pronouns.delay()
 	while result.ready() == False:
 		time.sleep(0.1)
-	return result.result
+	return '<h1>' + result.result + '<h1>'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',debug=True)
