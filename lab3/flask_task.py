@@ -31,7 +31,7 @@ def count():
 	values=['han', 'hon', 'den', 'det','denna', 'denne', 'hen']
 	labels=[han, hon, den, det, denna, denne, hen]
 
-	return render_template('chart.html', values=values, labels=labels, legend=legends)
+	return render_template('chart.html', values=values, labels=labels, legend=legend)
  	
 	#return '<div> han: ' + str(han) + ' hon: ' + str(hon) + ' den: ' + str(den) + ' det: ' + str(det) + ' denna: ' + str(denna) + ' denne: ' + str(denne) + ' hen: ' + str(hen) + ' number of tweet: ' + str(number_of_tweets) + ' </div>'
 
