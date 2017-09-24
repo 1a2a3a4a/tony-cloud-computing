@@ -1,4 +1,6 @@
 from flask import Flask, jsonify
+from flask import Markup
+from flask import render_template
 import subprocess
 import sys
 import time
@@ -25,7 +27,12 @@ def count():
 	hen= pronoun_dictionary['hen']
 	number_of_tweets = pronoun_dictionary['number_of_tweets']
 
-	return '<div> han: ' + str(han) + ' hon: ' + str(hon) + ' den: ' + str(den) + ' det: ' + str(det) + ' denna: ' + str(denna) + ' denne: ' + str(denne) + ' hen: ' + str(hen) + ' number of tweet: ' + str(number_of_tweets) + ' </div>'
+	values=['han', 'hon', 'den', 'det','denna', 'denne', 'hen']
+	labels=[han, hon, den, det, denna, denne, hen]
+
+	return render_template('chart.html', values=values, labels=labels)
+ 	
+	#return '<div> han: ' + str(han) + ' hon: ' + str(hon) + ' den: ' + str(den) + ' det: ' + str(det) + ' denna: ' + str(denna) + ' denne: ' + str(denne) + ' hen: ' + str(hen) + ' number of tweet: ' + str(number_of_tweets) + ' </div>'
 
 
 
