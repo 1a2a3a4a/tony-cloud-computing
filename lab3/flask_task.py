@@ -25,7 +25,7 @@ def count():
 	hen= pronoun_dictionary['hen']
 	number_of_tweets = pronoun_dictionary['number_of_tweets']
 
-	return '<div> han: ' + han + ' hon: ' + hon + ' den: ' + den + ' det: ' + det + ' denna: ' + denna + ' denne: ' + denne + ' hen: ' + hen + ' number of tweet: ' + number_of_tweets + ' </div>'
+	return '<div> han: ' + str(han) + ' hon: ' + str(hon) + ' den: ' + str(den) + ' det: ' + str(det) + ' denna: ' + str(denna) + ' denne: ' + str(denne) + ' hen: ' + str(hen) + ' number of tweet: ' + str(number_of_tweets) + ' </div>'
 
 
 
