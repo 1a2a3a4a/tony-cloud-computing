@@ -10,6 +10,7 @@ packages:
  - build-essential
  - cowsay
  - python-openstackclient
+ - emacs24
 byobu_default: system 
 
 write_files:
@@ -25,11 +26,15 @@ write_files:
           return data
       if __name__ == '__main__':
           app.run(host='0.0.0.0',debug=True)
-	  
+  - path: /home/ubuntu/clone.sh
+    content: |
+      echo 'cloneing my repo...'
+      git clone https://github.com/1a2a3a4a/tony-cloud-computing
 
 runcmd:
  - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
  - source /home/ubuntu/.bashrc
  - pip install Flask
  - pip install celery
+ - pip install flower
  
