@@ -37,4 +37,5 @@ runcmd:
  - pip install Flask
  - pip install celery
  - pip install flower
+ - git config --global user.email "tonywang3334@gmail.com"
  
