@@ -4,6 +4,7 @@ from flask import render_template
 import subprocess
 import sys
 import time
+import os
 from tasks import count_pronouns
 app = Flask(__name__)
 
@@ -13,19 +14,25 @@ def index():
 
 @app.route('/count_pronouns')
 def count():
-	result = count_pronouns.delay()
-	while result.ready() == False:
-		time.sleep(0.1)
-	pronoun_dictionary = result.result
+        my_dir = '/home/ubuntu/tony-cloud-computing/lab3/data'
+        os.chdir(my_dir)
+        pronoun_dictionary_list = []
+        han, hon, den, det, denna, denne, hen, number_of_tweets = 0, 0, 0, 0, 0, 0, 0, 0
+        for file_name in os.listdir(my_dir):
+                result = count_pronouns.delay(file_name)
+	        while result.ready() == False:
+		        time.sleep(0.1)
+                pronoun_dictionary_list.append(result.result)
 
-	han = pronoun_dictionary['han']
-	hon = pronoun_dictionary['hon']
-	den = pronoun_dictionary['den']
-	det = pronoun_dictionary['det']
-	denna = pronoun_dictionary['denna']
-	denne = pronoun_dictionary['denne']
-	hen= pronoun_dictionary['hen']
-	number_of_tweets = pronoun_dictionary['number_of_tweets']
+        for pronoun_dictionary in pronoun_dictionary_list:
+	        han = han + pronoun_dictionary['han']
+	        hon = hon + pronoun_dictionary['hon']
+	        den = den + pronoun_dictionary['den']
+	        det = det + pronoun_dictionary['det']
+	        denna = denna + pronoun_dictionary['denna']
+	        denne = denne + pronoun_dictionary['denne']
+	        hen = hen + pronoun_dictionary['hen']
+	        number_of_tweets = number_of_tweets + pronoun_dictionary['number_of_tweets']
 
 	legend='Frequency of pronouns'
 	labels=['han', 'hon', 'den', 'det','denna', 'denne', 'hen', 'number']

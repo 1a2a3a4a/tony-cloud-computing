@@ -8,10 +8,10 @@ def add(x, y):
     return x + y
 
 @app.task
-def count_pronouns():
-    file_path = 'data03'
+def count_pronouns(file_path):
+    #file_path = 'data03'
     text_tweet = []
-
+    file_paths = ['data01', 'data02', 'data03']
     try:
         with open(file_path) as f:
             for line in f:
