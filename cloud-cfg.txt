@@ -28,8 +28,9 @@ write_files:
           app.run(host='0.0.0.0',debug=True)
   - path: /home/ubuntu/clone.sh
     content: |
-      echo 'cloneing my repo...'
+      echo 'cloneing my repos...'
       git clone https://github.com/1a2a3a4a/tony-cloud-computing
+      git clone https://github.com/1a2a3a4a/ACC-1
 
 runcmd:
  - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  

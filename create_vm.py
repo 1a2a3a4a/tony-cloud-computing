@@ -46,7 +46,7 @@ if os.path.isfile(cfg_file_path):
 else:
     sys.exit("cloud-cfg.txt is not in current working directory")
 
-secgroups = ['default']
+secgroups = ['hoyhoy2']
 
 key = 'schoolkey'
 
