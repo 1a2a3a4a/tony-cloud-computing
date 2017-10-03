@@ -1,5 +1,7 @@
 from celery import Celery
 import json
+import sys
+import os
 app = Celery('tasks', broker='pyamqp://guest@localhost//')
 app.config_from_object('celeryconfig')
 
@@ -12,13 +14,17 @@ def count_pronouns(file_path):
     #file_path = 'data03'
     text_tweet = []
     file_paths = ['data01', 'data02', 'data03']
+    data_dir = '/home/ubuntu/tony-cloud-computing/lab3/data/data'
+    os.chdir(data_dir)
     try:
         with open(file_path) as f:
             for line in f:
                 if line[0] == '{':
                     text_tweet.append(json.loads(line)['text'].lower())             
     except:
-        return '<h1>ERROR</h1>'
+        print file_path
+        print 'EXITING'
+        sys.exit(1)
     han = 0
     hon = 0
     den = 0
