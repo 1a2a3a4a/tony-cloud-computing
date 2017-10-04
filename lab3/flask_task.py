@@ -18,14 +18,24 @@ def static_from_root():
     
 @app.route('/count_pronouns')
 def count():
-        my_dir = '/home/ubuntu/tony-cloud-computing/lab3/data/data'
+        my_dir = '/home/ubuntu/tony-cloud-computing/lab3/data'
         os.chdir(my_dir)
         pronoun_dictionary_list = []
+        result_list = []
         han, hon, den, det, denna, denne, hen, number_of_tweets = 0, 0, 0, 0, 0, 0, 0, 0.0
+        print 'hahah'
         for file_name in os.listdir('./'):
-                result = count_pronouns.delay(open(file_name))
-	        while result.ready() == False:
-		        time.sleep(0.1)
+                print 'huhuh'
+                result_list.append(count_pronouns.delay(file_name))
+                print 'haha'
+	while True:
+                print result_list
+                if all(r.ready() == True for r in result_list):
+                        break
+                else:
+                        time.sleep(0.1)
+
+        for result in result_list:
                 pronoun_dictionary_list.append(result.result)
 
         for pronoun_dictionary in pronoun_dictionary_list:
