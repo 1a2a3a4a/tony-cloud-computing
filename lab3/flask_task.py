@@ -23,7 +23,7 @@ def count():
         pronoun_dictionary_list = []
         han, hon, den, det, denna, denne, hen, number_of_tweets = 0, 0, 0, 0, 0, 0, 0, 0.0
         for file_name in os.listdir('./'):
-                result = count_pronouns.delay(file_name)
+                result = count_pronouns.delay(open(file_name))
 	        while result.ready() == False:
 		        time.sleep(0.1)
                 pronoun_dictionary_list.append(result.result)

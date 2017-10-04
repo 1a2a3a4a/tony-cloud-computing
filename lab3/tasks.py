@@ -10,19 +10,19 @@ def add(x, y):
     return x + y
 
 @app.task
-def count_pronouns(file_path):
+def count_pronouns(file_content):
     #file_path = 'data03'
     text_tweet = []
-    file_paths = ['data01', 'data02', 'data03']
-    data_dir = '/home/ubuntu/tony-cloud-computing/lab3/data/data'
-    os.chdir(data_dir)
-    try:
-        with open(file_path) as f:
-            for line in f:
-                if line[0] == '{':
-                    text_tweet.append(json.loads(line)['text'].lower())             
-    except:
-        print file_path
+    #file_paths = ['data01', 'data02', 'data03']
+    #data_dir = '/home/ubuntu/tony-cloud-computing/lab3/data/data'
+    #os.chdir(data_dir)
+    #try:
+    #with open(file_path) as f:
+    for line in file_content:
+        if line[0] == '{':
+            text_tweet.append(json.loads(line)['text'].lower())             
+    #except:
+    #    print file_path
         print 'EXITING'
         sys.exit(1)
     han = 0
