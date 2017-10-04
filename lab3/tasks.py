@@ -2,7 +2,7 @@ from celery import Celery
 import json
 import sys
 import os
-app = Celery('tasks', broker='pyamqp://guest@localhost//')
+app = Celery('tasks')
 app.config_from_object('celeryconfig')
 
 @app.task
