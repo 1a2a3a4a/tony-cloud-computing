@@ -15,18 +15,13 @@ packages:
 byobu_default: system 
 
 write_files:
-  - path: /home/ubuntu/cowsay-app.py
+  - path: /home/ubuntu/docker/create_fenics.sh
     content: |
-      from flask import Flask, jsonify
-      import subprocess
-      import sys
-      app = Flask(__name__)
-      @app.route('/cowsay/api/v1.0/saysomething', methods=['GET'])
-      def cow_say():
-          data=subprocess.check_output(["cowsay","Hello student"])
-          return data
-      if __name__ == '__main__':
-          app.run(host='0.0.0.0',debug=True)
+      sudo docker run -td -v $(pwd):/home/fenics/shared -w /home/fenics/shared quay.io/fenicsproject/stable:current
+      dd785034c0963d116d73bc6b618c8c8db88016ddcca6255cf3f877e772083df4
+  - path: /home/ubuntu/docker/login_fenics.sh
+    content: |
+      sudo docker ps | cut -c1-12
   - path: /home/ubuntu/clone.sh
     content: |
       echo 'cloneing my repos...'
