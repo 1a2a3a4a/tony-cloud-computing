@@ -35,6 +35,7 @@ runcmd:
  - pip install Flask
  - pip install celery
  - pip install flower
+ - pip install jupyter
  - pip install matplotlib
  - git config --global user.email "tonywang3334@gmail.com"
  - apt-get update
